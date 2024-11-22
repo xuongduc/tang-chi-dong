@@ -1,0 +1,110 @@
+/* Center the heart on the page */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    overflow: hidden;
+  }
+  
+  /* Create the heart shape */
+  .heart {
+    position: relative;
+    width: 20vh;
+    height: 20vh;
+    background-color: #ff1744;
+    transform: rotate(-45deg);
+    animation: beat 1s infinite ease-in-out;
+  }
+
+
+/* Center the text below the heart */
+.text {
+    margin-top: 100px; /* Adjust this value to move the text further below the heart */
+    font-size: 10vh;
+    color: #ff1744;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    position: absolute; /* Ensure it doesn't interfere with the heart's positioning */
+    top: 60%; /* Push the text below the heart */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center alignment */
+  }
+
+.text.show{
+    visibility: visible;
+}
+
+.text.hidden{
+    visibility: hidden;
+}
+  
+  
+  
+  /* Add the top left circle of the heart */
+  .heart::before,
+  .heart::after {
+    content: "";
+    position: absolute;
+    width: 20vh;
+    height: 20vh;
+    background-color: #ff1744;
+    border-radius: 50%;
+  }
+  
+  /* Position the circles to form the heart */
+  .heart::before {
+    top:-10vh;
+    left: 0;
+  }
+  
+  .heart::after {
+    top: 0vh;
+    left: 10vh;
+  }
+  
+
+
+/* Pop-up styling */
+.popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-size: 60px;
+    color: #ff1744;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .popup.show {
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  .popup.hidden {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+
+  }
+  /* Create the beating animation */
+  @keyframes beat {
+    0%, 100% {
+      transform: scale(1) rotate(-45deg);
+    }
+    50% {
+      transform: scale(1.2) rotate(-45deg);
+    }
+  }
+  
